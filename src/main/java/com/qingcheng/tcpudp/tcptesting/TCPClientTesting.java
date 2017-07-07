@@ -1,4 +1,4 @@
-package com.qingcheng.tcpudp.tcp;
+package com.qingcheng.tcpudp.tcptesting;
 
 
 import com.qingcheng.tcpudp.utils.L;
@@ -20,10 +20,10 @@ public class TCPClientTesting {
     }
 
     public void run(){
-        com.qingcheng.tcpudp.utils.L.i("start  tcp client");
+        L.i("start  tcptesting client");
 
         try {
-            Socket socket = new Socket("localhost" , 10090);
+            Socket socket = new Socket("localhost" , 9192);
             L.d("连接建立");
             socket.setSoTimeout(10000);
             BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -35,6 +35,7 @@ public class TCPClientTesting {
                 String text = input.readLine();
                 L.d("向服务器发送消息：" + text);
                 output.println(text);
+//                socket.shutdownOutput();
                 if("bye".equalsIgnoreCase(text)){
                     flag = false;
                     L.d("发送完毕 准备退出");
